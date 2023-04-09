@@ -93,6 +93,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => LoginWidget(),
             ),
             FFRoute(
+              name: 'searchpage',
+              path: 'searchpage',
+              builder: (context, params) => SearchpageWidget(
+                isincollection:
+                    params.getParam('isincollection', ParamType.int),
+              ),
+            ),
+            FFRoute(
               name: 'CreateReview',
               path: 'createReview',
               builder: (context, params) => CreateReviewWidget(
@@ -103,14 +111,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 imagepath: params.getParam('imagepath', ParamType.String),
                 docref: params.getParam('docref', ParamType.DocumentReference,
                     false, ['Restaurant']),
-              ),
-            ),
-            FFRoute(
-              name: 'searchpage',
-              path: 'searchpage',
-              builder: (context, params) => SearchpageWidget(
-                isincollection:
-                    params.getParam('isincollection', ParamType.int),
               ),
             ),
             FFRoute(

@@ -599,7 +599,7 @@ class _SearchpageWidgetState extends State<SearchpageWidget> {
                                                                       getJsonField(
                                                                 restaurantlistItem,
                                                                 r'''$.rating''',
-                                                              )),
+                                                              ))!,
                                                               unratedColor: Color(
                                                                   0xFF9E9E9E),
                                                               itemCount: 5,
@@ -637,7 +637,7 @@ class _SearchpageWidgetState extends State<SearchpageWidget> {
                                                                       getJsonField(
                                                                 restaurantlistItem,
                                                                 r'''$.price_level''',
-                                                              )),
+                                                              ))!,
                                                               unratedColor: Color(
                                                                   0xFF9E9E9E),
                                                               itemCount: 5,

@@ -573,7 +573,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         getJsonField(
                                                                   restaurantlistItem,
                                                                   r'''$.rating''',
-                                                                )),
+                                                                ))!,
                                                                 unratedColor: Color(
                                                                     0xFF9E9E9E),
                                                                 itemCount: 5,
@@ -620,7 +620,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         getJsonField(
                                                                   restaurantlistItem,
                                                                   r'''$.price_level''',
-                                                                )),
+                                                                ))!,
                                                                 unratedColor: Color(
                                                                     0xFF9E9E9E),
                                                                 itemCount: 5,

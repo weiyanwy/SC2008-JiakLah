@@ -669,7 +669,7 @@ class _RestaurantpageWidgetState extends State<RestaurantpageWidget> {
                                                               getJsonField(
                                                         reviewListItem,
                                                         r'''$.rating''',
-                                                      )),
+                                                      ))!,
                                                       unratedColor:
                                                           Color(0xFF95A1AC),
                                                       itemCount: 5,

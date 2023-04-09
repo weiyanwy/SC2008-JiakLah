@@ -31,6 +31,10 @@ String? getimg(String? photoref) {
   return stringUri;
 }
 
-double converttodouble(int ratingprice) {
-  return ratingprice.toDouble();
+double? converttodouble(int ratingprice) {
+  if (ratingprice >= 0) {
+    return ratingprice.toDouble();
+  }
+
+  return 0.0;
 }
