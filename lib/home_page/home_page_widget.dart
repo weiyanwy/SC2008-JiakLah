@@ -568,12 +568,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                 ),
                                                                 direction: Axis
                                                                     .horizontal,
-                                                                rating: functions
-                                                                    .converttodouble(
-                                                                        getJsonField(
+                                                                rating:
+                                                                    getJsonField(
                                                                   restaurantlistItem,
                                                                   r'''$.rating''',
-                                                                ))!,
+                                                                ),
                                                                 unratedColor: Color(
                                                                     0xFF9E9E9E),
                                                                 itemCount: 5,
