@@ -30,3 +30,7 @@ String? getimg(String? photoref) {
   String stringUri = url.toString();
   return stringUri;
 }
+
+double converttodouble(int ratingprice) {
+  return ratingprice.toDouble();
+}

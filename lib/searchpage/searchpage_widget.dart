@@ -594,11 +594,12 @@ class _SearchpageWidgetState extends State<SearchpageWidget> {
                                                               ),
                                                               direction: Axis
                                                                   .horizontal,
-                                                              rating:
-                                                                  getJsonField(
+                                                              rating: functions
+                                                                  .converttodouble(
+                                                                      getJsonField(
                                                                 restaurantlistItem,
                                                                 r'''$.rating''',
-                                                              ),
+                                                              )),
                                                               unratedColor: Color(
                                                                   0xFF9E9E9E),
                                                               itemCount: 5,
@@ -631,11 +632,12 @@ class _SearchpageWidgetState extends State<SearchpageWidget> {
                                                               ),
                                                               direction: Axis
                                                                   .horizontal,
-                                                              rating:
-                                                                  getJsonField(
+                                                              rating: functions
+                                                                  .converttodouble(
+                                                                      getJsonField(
                                                                 restaurantlistItem,
                                                                 r'''$.price_level''',
-                                                              ),
+                                                              )),
                                                               unratedColor: Color(
                                                                   0xFF9E9E9E),
                                                               itemCount: 5,
