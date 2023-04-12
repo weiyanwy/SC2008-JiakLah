@@ -468,47 +468,43 @@ class _FilterpageWidgetState extends State<FilterpageWidget> {
                                                               ),
                                                     ),
                                                   ),
-                                                  if (restaurantlistItem
-                                                          .rating !=
-                                                      0.0)
-                                                    Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              -0.98, 0.0),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    2.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child:
-                                                            RatingBarIndicator(
-                                                          itemBuilder: (context,
-                                                                  index) =>
-                                                              Icon(
-                                                            Icons.star_rounded,
-                                                            color: Color(
-                                                                0xFFD2C839),
-                                                          ),
-                                                          direction:
-                                                              Axis.horizontal,
-                                                          rating: getJsonField(
-                                                            columnRestaurantDetailsResponse
-                                                                .jsonBody,
-                                                            r'''$.result.rating''',
-                                                          ),
-                                                          unratedColor:
-                                                              Color(0xFF9E9E9E),
-                                                          itemCount: 5,
-                                                          itemSize: 15.0,
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -0.98, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  2.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: RatingBarIndicator(
+                                                        itemBuilder:
+                                                            (context, index) =>
+                                                                Icon(
+                                                          Icons.star_rounded,
+                                                          color:
+                                                              Color(0xFFD2C839),
                                                         ),
+                                                        direction:
+                                                            Axis.horizontal,
+                                                        rating: getJsonField(
+                                                          columnRestaurantDetailsResponse
+                                                              .jsonBody,
+                                                          r'''$.result.rating''',
+                                                        ),
+                                                        unratedColor:
+                                                            Color(0xFF9E9E9E),
+                                                        itemCount: 5,
+                                                        itemSize: 15.0,
                                                       ),
                                                     ),
-                                                  if (restaurantlistItem
-                                                          .price !=
-                                                      null)
+                                                  ),
+                                                  if (restaurantlistItem.price
+                                                          .toString() !=
+                                                      '0')
                                                     Align(
                                                       alignment:
                                                           AlignmentDirectional(
