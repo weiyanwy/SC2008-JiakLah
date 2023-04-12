@@ -10,6 +10,9 @@ import 'package:provider/provider.dart';
 class CreateAccModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  // State field(s) for displayname widget.
+  TextEditingController? displaynameController;
+  String? Function(BuildContext, String?)? displaynameControllerValidator;
   // State field(s) for inputEmail widget.
   TextEditingController? inputEmailController;
   String? Function(BuildContext, String?)? inputEmailControllerValidator;
@@ -21,9 +24,6 @@ class CreateAccModel extends FlutterFlowModel {
   TextEditingController? confirmpasswordController;
   late bool confirmpasswordVisibility;
   String? Function(BuildContext, String?)? confirmpasswordControllerValidator;
-  // State field(s) for displayname widget.
-  TextEditingController? displaynameController;
-  String? Function(BuildContext, String?)? displaynameControllerValidator;
 
   /// Initialization and disposal methods.
 
@@ -33,10 +33,10 @@ class CreateAccModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    displaynameController?.dispose();
     inputEmailController?.dispose();
     inputPassController?.dispose();
     confirmpasswordController?.dispose();
-    displaynameController?.dispose();
   }
 
   /// Additional helper methods are added here.

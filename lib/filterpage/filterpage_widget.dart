@@ -362,121 +362,129 @@ class _FilterpageWidgetState extends State<FilterpageWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             4.0, 4.0, 4.0, 4.0),
-                                        child: InkWell(
-                                          onTap: () async {
-                                            context.pushNamed(
-                                              'restaurantpage',
-                                              queryParams: {
-                                                'placeid': serializeParam(
-                                                  restaurantlistItem.placeID,
-                                                  ParamType.String,
+                                        child: FutureBuilder<ApiCallResponse>(
+                                          future: RestaurantDetailsCall.call(
+                                            placeid: restaurantlistItem.placeID,
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                  ),
                                                 ),
-                                                'rating': serializeParam(
-                                                  restaurantlistItem.rating,
-                                                  ParamType.double,
-                                                ),
-                                                'isincollection':
-                                                    serializeParam(
-                                                  1,
-                                                  ParamType.int,
-                                                ),
-                                                'name': serializeParam(
-                                                  restaurantlistItem.name,
-                                                  ParamType.String,
-                                                ),
-                                                'wheelchairentrance':
-                                                    serializeParam(
-                                                  restaurantlistItem
-                                                      .wheelChairAccessbileEntrance,
-                                                  ParamType.bool,
-                                                ),
-                                                'imageurl': serializeParam(
-                                                  restaurantlistItem.imageref,
-                                                  ParamType.String,
-                                                ),
-                                                'pricelevel': serializeParam(
-                                                  restaurantlistItem.price,
-                                                  ParamType.int,
-                                                ),
-                                              }.withoutNulls,
-                                            );
-                                          },
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                                child: Image.network(
-                                                  restaurantlistItem.imageref!,
-                                                  width: 425.0,
-                                                  height: 150.0,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        8.0, 12.0, 0.0, 0.0),
-                                                child: Text(
-                                                  restaurantlistItem.name!,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .titleMedium
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        color:
-                                                            Color(0xFF14181B),
-                                                        fontSize: 16.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                                ),
-                                              ),
-                                              if (restaurantlistItem.rating !=
-                                                  0.0)
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          -0.98, 0.0),
-                                                  child: Padding(
+                                              );
+                                            }
+                                            final columnRestaurantDetailsResponse =
+                                                snapshot.data!;
+                                            return InkWell(
+                                              onTap: () async {
+                                                context.pushNamed(
+                                                  'restaurantpage',
+                                                  queryParams: {
+                                                    'placeid': serializeParam(
+                                                      restaurantlistItem
+                                                          .placeID,
+                                                      ParamType.String,
+                                                    ),
+                                                    'rating': serializeParam(
+                                                      restaurantlistItem.rating,
+                                                      ParamType.double,
+                                                    ),
+                                                    'isincollection':
+                                                        serializeParam(
+                                                      1,
+                                                      ParamType.int,
+                                                    ),
+                                                    'name': serializeParam(
+                                                      restaurantlistItem.name,
+                                                      ParamType.String,
+                                                    ),
+                                                    'wheelchairentrance':
+                                                        serializeParam(
+                                                      restaurantlistItem
+                                                          .wheelChairAccessbileEntrance,
+                                                      ParamType.bool,
+                                                    ),
+                                                    'imageurl': serializeParam(
+                                                      restaurantlistItem
+                                                          .imageref,
+                                                      ParamType.String,
+                                                    ),
+                                                    'pricelevel':
+                                                        serializeParam(
+                                                      restaurantlistItem.price,
+                                                      ParamType.int,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+                                              },
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0),
+                                                    child: Image.network(
+                                                      restaurantlistItem
+                                                          .imageref!,
+                                                      width: 425.0,
+                                                      height: 150.0,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                  Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(2.0, 0.0,
+                                                            .fromSTEB(8.0, 12.0,
                                                                 0.0, 0.0),
-                                                    child: FutureBuilder<
-                                                        ApiCallResponse>(
-                                                      future:
-                                                          RestaurantDetailsCall
-                                                              .call(
-                                                        placeid:
-                                                            restaurantlistItem
-                                                                .placeID,
-                                                      ),
-                                                      builder:
-                                                          (context, snapshot) {
-                                                        // Customize what your widget looks like when it's loading.
-                                                        if (!snapshot.hasData) {
-                                                          return Center(
-                                                            child: SizedBox(
-                                                              width: 50.0,
-                                                              height: 50.0,
-                                                              child:
-                                                                  CircularProgressIndicator(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
+                                                    child: Text(
+                                                      restaurantlistItem.name!,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                color: Color(
+                                                                    0xFF14181B),
+                                                                fontSize: 16.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
                                                               ),
-                                                            ),
-                                                          );
-                                                        }
-                                                        final ratingBarRestaurantDetailsResponse =
-                                                            snapshot.data!;
-                                                        return RatingBarIndicator(
+                                                    ),
+                                                  ),
+                                                  if (restaurantlistItem
+                                                          .rating !=
+                                                      0.0)
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              -0.98, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    2.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child:
+                                                            RatingBarIndicator(
                                                           itemBuilder: (context,
                                                                   index) =>
                                                               Icon(
@@ -487,7 +495,7 @@ class _FilterpageWidgetState extends State<FilterpageWidget> {
                                                           direction:
                                                               Axis.horizontal,
                                                           rating: getJsonField(
-                                                            ratingBarRestaurantDetailsResponse
+                                                            columnRestaurantDetailsResponse
                                                                 .jsonBody,
                                                             r'''$.result.rating''',
                                                           ),
@@ -495,89 +503,96 @@ class _FilterpageWidgetState extends State<FilterpageWidget> {
                                                               Color(0xFF9E9E9E),
                                                           itemCount: 5,
                                                           itemSize: 15.0,
-                                                        );
-                                                      },
+                                                        ),
+                                                      ),
                                                     ),
-                                                  ),
-                                                ),
-                                              if (restaurantlistItem.price !=
-                                                  null)
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          -0.98, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(2.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: RatingBarIndicator(
-                                                      itemBuilder:
-                                                          (context, index) =>
+                                                  if (restaurantlistItem
+                                                          .price !=
+                                                      null)
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              -0.98, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    2.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child:
+                                                            RatingBarIndicator(
+                                                          itemBuilder: (context,
+                                                                  index) =>
                                                               Icon(
-                                                        Icons.attach_money,
-                                                        color:
-                                                            Color(0xFF55D239),
+                                                            Icons.attach_money,
+                                                            color: Color(
+                                                                0xFF55D239),
+                                                          ),
+                                                          direction:
+                                                              Axis.horizontal,
+                                                          rating:
+                                                              restaurantlistItem
+                                                                  .price!
+                                                                  .toDouble(),
+                                                          unratedColor:
+                                                              Color(0xFF9E9E9E),
+                                                          itemCount: 5,
+                                                          itemSize: 15.0,
+                                                        ),
                                                       ),
-                                                      direction:
-                                                          Axis.horizontal,
-                                                      rating: restaurantlistItem
-                                                          .price!
-                                                          .toDouble(),
-                                                      unratedColor:
-                                                          Color(0xFF9E9E9E),
-                                                      itemCount: 5,
-                                                      itemSize: 15.0,
                                                     ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    children: [
+                                                      if ((restaurantlistItem
+                                                                  .wheelChairAccessbileEntrance ==
+                                                              true) ||
+                                                          (restaurantlistItem
+                                                                  .wheelChairTag! >=
+                                                              5))
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      8.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Icon(
+                                                            Icons
+                                                                .wheelchair_pickup_sharp,
+                                                            color: Colors.black,
+                                                            size: 24.0,
+                                                          ),
+                                                        ),
+                                                      if (restaurantlistItem
+                                                              .blindFriendlyTag! >=
+                                                          5)
+                                                        Icon(
+                                                          Icons.remove_red_eye,
+                                                          color: Colors.black,
+                                                          size: 24.0,
+                                                        ),
+                                                      if (restaurantlistItem
+                                                              .signLanguage! >=
+                                                          5)
+                                                        FaIcon(
+                                                          FontAwesomeIcons
+                                                              .signLanguage,
+                                                          color: Colors.black,
+                                                          size: 24.0,
+                                                        ),
+                                                    ],
                                                   ),
-                                                ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  if ((restaurantlistItem
-                                                              .wheelChairAccessbileEntrance ==
-                                                          true) ||
-                                                      (restaurantlistItem
-                                                              .wheelChairTag! >=
-                                                          5))
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  8.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Icon(
-                                                        Icons
-                                                            .wheelchair_pickup_sharp,
-                                                        color: Colors.black,
-                                                        size: 24.0,
-                                                      ),
-                                                    ),
-                                                  if (restaurantlistItem
-                                                          .blindFriendlyTag! >=
-                                                      5)
-                                                    Icon(
-                                                      Icons.remove_red_eye,
-                                                      color: Colors.black,
-                                                      size: 24.0,
-                                                    ),
-                                                  if (restaurantlistItem
-                                                          .signLanguage! >=
-                                                      5)
-                                                    FaIcon(
-                                                      FontAwesomeIcons
-                                                          .signLanguage,
-                                                      color: Colors.black,
-                                                      size: 24.0,
-                                                    ),
                                                 ],
                                               ),
-                                            ],
-                                          ),
+                                            );
+                                          },
                                         ),
                                       ),
                                     ],
